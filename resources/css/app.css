@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak\.nav] {
+    display: flex !important;
+    justify-content: space-between;
+    height: 5rem;
+}
+
+[x-cloak\.nav-mobile] {
+    display: none !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide-x::-webkit-scrollbar:horizontal {
+    height: 0;
+}
+
+.scrollbar-hide-x {
+    scrollbar-width: thin;       /* keep vertical scrollbars normal */
+    -ms-overflow-style: auto;    /* keep vertical scrollbars normal on IE/Edge */
+}
+
+@media (min-width: 640px) {
+  .sm\:scrollbar-show::-webkit-scrollbar {
+    display: initial;
+  }
+  .sm\:scrollbar-show {
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
+}
+
+.flash-ring::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    border: 3px solid #a5b4fce6;
+    box-shadow: 0 0 20px #a5b4fc80;
+    animation: flashRing 1.2s ease-out;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes flashRing {
+    0% {
+        opacity: 0;
+        transform: scale(0.99);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+.exerciceList {
+  max-height: 0;
+  overflow: hidden;
+  transform: scale(0.97);
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.exerciceList.shrinking {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.ts-control:focus-within {
+    @apply ring-2 ring-offset-2 ring-red-400 border-red-400;
+}
